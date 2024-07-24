@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DDDSampleProject.Domain.Entitites.UserManagement;
+namespace DDDSampleProject.Domain.Entities.UserManagement;
 
 public class User
 {

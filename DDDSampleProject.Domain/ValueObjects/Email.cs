@@ -1,5 +1,6 @@
 ﻿using DDDSampleProject.Domain.Exceptions.CourseManagementExceptions;
 using System.Net.Mail;
+using DDDSampleProject.Domain.Exceptions.UserManagementExceptions;
 
 namespace DDDSampleProject.Domain.ValueObjects;
 

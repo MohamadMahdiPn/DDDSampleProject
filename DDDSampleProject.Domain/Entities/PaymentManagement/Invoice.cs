@@ -1,12 +1,12 @@
-﻿using DDDSampleProject.Domain.Entitites.CourseManagement;
-using DDDSampleProject.Domain.Entitites.UserManagement;
+﻿using DDDSampleProject.Domain.Entities.CourseManagement;
+using DDDSampleProject.Domain.Entities.UserManagement;
 using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace DDDSampleProject.Domain.Entitites.PaymentManagement;
+namespace DDDSampleProject.Domain.Entities.PaymentManagement;
 
 public class Invoice
 {

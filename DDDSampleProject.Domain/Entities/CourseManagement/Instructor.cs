@@ -1,4 +1,4 @@
-﻿namespace DDDSampleProject.Domain.Entitites.CourseManagement;
+﻿namespace DDDSampleProject.Domain.Entities.CourseManagement;
 
 public class Instructor
 {

@@ -1,5 +1,6 @@
 ﻿using DDDSampleProject.Domain.Exceptions.CourseManagementExceptions;
 using System.Text.RegularExpressions;
+using DDDSampleProject.Domain.Exceptions.UserManagementExceptions;
 
 namespace DDDSampleProject.Domain.ValueObjects;
 

@@ -1,4 +1,4 @@
-﻿namespace DDDSampleProject.Domain.Entitites.UserManagement;
+﻿namespace DDDSampleProject.Domain.Entities.UserManagement;
 
 public class Role
 {
