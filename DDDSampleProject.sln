@@ -5,6 +5,10 @@ VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDDSampleProject.Domain", "DDDSampleProject.Domain\DDDSampleProject.Domain.csproj", "{41D217A2-5BF0-46D0-8D85-F2BFCAF81C2F}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Shared", "Shared", "{95EE68A6-8165-42EE-AAA2-C0B0A4029435}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DDDSampleProject.Abstraction", "Shared\DDDSampleProject.Abstraction\DDDSampleProject.Abstraction.csproj", "{65D60C43-EF8F-47AF-8240-D64105D1ACF1}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,9 +19,16 @@ Global
 		{41D217A2-5BF0-46D0-8D85-F2BFCAF81C2F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{41D217A2-5BF0-46D0-8D85-F2BFCAF81C2F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{41D217A2-5BF0-46D0-8D85-F2BFCAF81C2F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{65D60C43-EF8F-47AF-8240-D64105D1ACF1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{65D60C43-EF8F-47AF-8240-D64105D1ACF1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{65D60C43-EF8F-47AF-8240-D64105D1ACF1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{65D60C43-EF8F-47AF-8240-D64105D1ACF1}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{65D60C43-EF8F-47AF-8240-D64105D1ACF1} = {95EE68A6-8165-42EE-AAA2-C0B0A4029435}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {1518FCF9-275F-430B-B119-4201E2377047}

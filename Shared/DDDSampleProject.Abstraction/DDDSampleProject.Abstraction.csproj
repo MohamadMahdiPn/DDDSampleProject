@@ -6,8 +6,4 @@
     <Nullable>enable</Nullable>
   </PropertyGroup>
 
-  <ItemGroup>
-    <ProjectReference Include="..\Shared\DDDSampleProject.Abstraction\DDDSampleProject.Abstraction.csproj" />
-  </ItemGroup>
-
 </Project>
