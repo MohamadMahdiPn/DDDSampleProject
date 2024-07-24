@@ -1,9 +1,27 @@
-﻿namespace DDDSampleProject.Domain.Entities.CourseManagement;
+﻿using DDDSampleProject.Domain.Primitives;
+using DDDSampleProject.Domain.ValueObjects;
 
-public class Instructor
+namespace DDDSampleProject.Domain.Entities.CourseManagement;
+
+public class Instructor:BaseEntity
 {
-    public Guid Id { get; set; }
-    public string Name { get; set; }
-    public string Bio { get; set; }
-    public List<Course> Courses { get; set; }
+    #region Constructor
+
+    public Instructor(BaseId id):base(id)
+    {
+        
+    }
+
+    internal Instructor(BaseId id, FullName fullName, Biography biography) : base(id)
+    {
+        _fullName = fullName;
+        _biography = biography;
+      
+    }
+
+    #endregion
+   private FullName _fullName;
+   private Biography _biography;
+   private LinkedList<Course> _courses;
+  
 }
