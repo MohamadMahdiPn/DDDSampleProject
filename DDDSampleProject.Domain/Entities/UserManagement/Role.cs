@@ -1,10 +1,28 @@
-﻿namespace DDDSampleProject.Domain.Entities.UserManagement;
+﻿using DDDSampleProject.Domain.Primitives;
+using DDDSampleProject.Domain.ValueObjects;
 
-public class Role
+namespace DDDSampleProject.Domain.Entities.UserManagement;
+
+public class Role:BaseEntity
 {
-    public Guid Id { get; set; }
-    public string Name { get; set; }
-    public List<UserRole> UserRoles { get; set; }
+    #region Constructor
+
+
+    public Role(BaseId id):base(id)
+    {
+        
+    }
+
+    internal Role(BaseId id, FullName fullName) : base(id)
+    {
+        _fullName = fullName;
+        
+    }
+
+    #endregion
+    private FullName _fullName;
+   private LinkedList<UserRole> _userRoles;
+  
 
 
 }

@@ -3,24 +3,36 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DDDSampleProject.Domain.Primitives;
+using DDDSampleProject.Domain.ValueObjects;
 
 namespace DDDSampleProject.Domain.Entities.UserManagement;
 
-public class User
+public class User : BaseEntity
 {
-    public Guid Id { get; set; }
-    public string UserName { get; set; }
-    public string PasswordHash { get; set; }
-    public string Email { get; set; }
-    public bool IsConfirmed { get; set; }
-    public List<UserRole> UserRoles { get; set; }
+    #region Constructor
 
-}
-public class UserRole
-{
-    public Guid UserId { get; set; }
-    public User User { get; set; }
+    public User(BaseId id) : base(id)
+    {
 
-    public Guid RoleId { get; set; }
-    public Role Role { get; set; }
+    }
+
+    internal User(BaseId id, UserName userName, Password password, Email email, bool isConfirmed, string passwordHash) : base(id)
+    {
+        _userName = userName;
+        _password = password;
+        _email = email;
+        _isConfirmed = isConfirmed;
+        _passwordHash = passwordHash;
+    }
+
+    #endregion
+
+    private UserName _userName;
+    private Password _password;
+    private Email _email;
+    private bool _isConfirmed;
+    private string _passwordHash;
+    private LinkedList<UserRole> _userRoles;
+
 }
