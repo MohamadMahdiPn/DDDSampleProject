@@ -14,11 +14,4 @@ internal class BiographyNullOrEmptyException : CourseManagementException
 
     }
 }
-internal class RoleNameNullOrEmptyException : CourseManagementException
-{
-    public RoleNameNullOrEmptyException() : base("RoleName can not be empty !!!")
-    {
-
-    }
-}
 

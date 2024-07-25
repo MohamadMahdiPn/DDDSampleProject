@@ -4,7 +4,7 @@ namespace DDDSampleProject.Domain.Exceptions.CourseManagementExceptions;
 
 internal class InvalidVideoUrlLengthException : CourseManagementException
 {
-    public InvalidVideoUrlLengthException() : base("biography can not be more than 300 !!!")
+    public InvalidVideoUrlLengthException() : base("Video Url can not be more than 300 !!!")
     {
 
     }

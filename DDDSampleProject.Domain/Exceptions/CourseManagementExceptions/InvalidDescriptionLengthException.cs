@@ -4,7 +4,7 @@ namespace DDDSampleProject.Domain.Exceptions.CourseManagementExceptions;
 
 internal class InvalidDescriptionLengthException : CourseManagementException
 {
-    public InvalidDescriptionLengthException(int validLength) : base($"biography can not be more than {validLength}")
+    public InvalidDescriptionLengthException(int validLength) : base($"Description can not be more than {validLength}")
     {
 
     }
