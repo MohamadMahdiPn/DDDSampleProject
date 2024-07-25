@@ -42,6 +42,8 @@ public class Course : AggregateRoot<BaseId>
     private LinkedList<CourseCatalog> _courseCatalogs;
 
     #region Functions
+
+    #region CourseAttendee
     public void AddCourseAttendee(CourseAttendee courseAttendee)
     {
         if (_courseAttendees.Any(x => x.Id == courseAttendee.Id))
@@ -64,7 +66,9 @@ public class Course : AggregateRoot<BaseId>
         var attendee = GetAttendee(id);
         _courseAttendees.Remove(attendee);
     }
+    #endregion
 
+    #region CourseCatalog
     public void AddCourseCatalog(CourseCatalog courseCatalog)
     {
         if (_courseAttendees.Any(x => x.Id == courseCatalog.Id))
@@ -87,5 +91,7 @@ public class Course : AggregateRoot<BaseId>
         var attendee = GetCourseCatalog(id);
         _courseCatalogs.Remove(attendee);
     }
+    #endregion
+
     #endregion
 }

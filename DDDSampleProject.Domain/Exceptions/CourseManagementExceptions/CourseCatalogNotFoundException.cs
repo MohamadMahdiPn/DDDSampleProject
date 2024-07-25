@@ -3,9 +3,9 @@ using DDDSampleProject.Domain.ValueObjects;
 
 namespace DDDSampleProject.Domain.Exceptions.CourseManagementExceptions;
 
-internal class CourseAttendeeNotFoundException : CourseManagementException
+internal class CourseCatalogNotFoundException : CourseManagementException
 {
-    public CourseAttendeeNotFoundException(BaseId id) : base($"Attendee {id} not found !!!")
+    public CourseCatalogNotFoundException(BaseId id) : base($"Course catalog {id} not found !!!")
     {
 
     }
