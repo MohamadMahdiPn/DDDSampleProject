@@ -14,4 +14,3 @@ internal class BiographyNullOrEmptyException : CourseManagementException
 
     }
 }
-
