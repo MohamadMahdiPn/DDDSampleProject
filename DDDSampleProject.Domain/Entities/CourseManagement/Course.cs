@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using DDDSampleProject.Abstraction.Domain;
+using DDDSampleProject.Domain.Events;
 using DDDSampleProject.Domain.Exceptions.CourseManagementExceptions;
 using DDDSampleProject.Domain.Primitives;
 using DDDSampleProject.Domain.ValueObjects;
@@ -21,6 +22,7 @@ public class Course : AggregateRoot<BaseId>
         _isFree = isFree;
         _price = price;
         _instructorId = instructorId;
+        RaiseDomainEvent(new NewCourseCreatedEvent(this));
     }
 
 
@@ -51,6 +53,7 @@ public class Course : AggregateRoot<BaseId>
             throw new CourseAtendeeExistException(courseAttendee.Id);
         }
         _courseAttendees.AddLast(courseAttendee);
+        RaiseDomainEvent(new CourseAttendeeAddedEvent(this, courseAttendee));
     }
 
     private CourseAttendee GetAttendee(BaseId id)

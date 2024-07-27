@@ -3,27 +3,31 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using DDDSampleProject.Abstraction.Domain;
+using DDDSampleProject.Domain.Events;
 using DDDSampleProject.Domain.Primitives;
 using DDDSampleProject.Domain.ValueObjects;
 
 namespace DDDSampleProject.Domain.Entities.UserManagement;
 
-public class User : BaseEntity
+public class User : AggregateRoot<BaseId>
 {
     #region Constructor
 
-    public User(BaseId id) : base(id)
+    public User()
     {
 
     }
 
-    internal User(BaseId id, UserName userName, Password password, Email email, bool isConfirmed, string passwordHash) : base(id)
+    internal User(BaseId id, UserName userName, Password password, Email email, bool isConfirmed, string passwordHash) 
     {
+        Id = id;
         _userName = userName;
         _password = password;
         _email = email;
         _isConfirmed = isConfirmed;
         _passwordHash = passwordHash;
+        RaiseDomainEvent(new UserRegisteredEvent(this));
     }
 
     #endregion
