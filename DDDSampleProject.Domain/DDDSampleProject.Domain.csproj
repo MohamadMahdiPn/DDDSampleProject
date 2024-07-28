@@ -10,9 +10,4 @@
     <ProjectReference Include="..\Shared\DDDSampleProject.Abstraction\DDDSampleProject.Abstraction.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Factories\PaymentManagement\" />
-    <Folder Include="Factories\UserManagement\" />
-  </ItemGroup>
-
 </Project>

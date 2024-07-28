@@ -19,14 +19,14 @@ public class User : AggregateRoot<BaseId>
 
     }
 
-    internal User(BaseId id, UserName userName, Password password, Email email, bool isConfirmed, string passwordHash) 
+    internal User(BaseId id, UserName userName, Password password, Email email, bool isConfirmed) 
     {
         Id = id;
         _userName = userName;
         _password = password;
         _email = email;
         _isConfirmed = isConfirmed;
-        _passwordHash = passwordHash;
+      
         RaiseDomainEvent(new UserRegisteredEvent(this));
     }
 
