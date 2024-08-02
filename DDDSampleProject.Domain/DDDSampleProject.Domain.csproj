@@ -10,4 +10,8 @@
     <ProjectReference Include="..\Shared\DDDSampleProject.Abstraction\DDDSampleProject.Abstraction.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Repositories\UserManagement\" />
+  </ItemGroup>
+
 </Project>
