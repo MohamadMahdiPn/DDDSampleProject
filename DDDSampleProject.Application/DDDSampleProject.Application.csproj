@@ -1,0 +1,25 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net8.0</TargetFramework>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <Nullable>enable</Nullable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <Folder Include="Commands\CourseManagement\Handlers\" />
+    <Folder Include="Commands\PaymentManagement\Handlers\" />
+    <Folder Include="Commands\UserManagement\Handlers\" />
+    <Folder Include="DomainEvents\" />
+    <Folder Include="Exceptions\" />
+    <Folder Include="Dtos\" />
+    <Folder Include="Services\" />
+    <Folder Include="Queries\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\DDDSampleProject.Domain\DDDSampleProject.Domain.csproj" />
+    <ProjectReference Include="..\Shared\DDDSampleProject.Abstraction\DDDSampleProject.Abstraction.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -8,13 +8,13 @@ using System.Threading.Tasks;
 
 namespace DDDSampleProject.Domain.Factories.CourseManagement;
 
-public interface ICourseFactoryFactory
+public interface ICourseFactory
 {
     Course Create(BaseId id, Title title, Description description, bool isFree, Price price, BaseId instructorId);
 }
 
 
-public class CourseFactory : ICourseFactoryFactory
+public class CourseFactory : ICourseFactory
 {
 
 
