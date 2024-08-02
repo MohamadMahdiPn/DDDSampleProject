@@ -7,11 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Commands\CourseManagement\Handlers\" />
     <Folder Include="Commands\PaymentManagement\Handlers\" />
-    <Folder Include="Commands\UserManagement\Handlers\" />
     <Folder Include="DomainEvents\" />
-    <Folder Include="Exceptions\" />
     <Folder Include="Dtos\" />
     <Folder Include="Services\" />
     <Folder Include="Queries\" />

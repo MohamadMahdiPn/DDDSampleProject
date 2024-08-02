@@ -2,7 +2,7 @@
 
 namespace DDDSampleProject.Domain.Repositories.UserManagement;
 
-public interface IUserRepositories:IGenericRepository<User>
+public interface IUserRepository:IGenericRepository<User>
 {
     
 }
