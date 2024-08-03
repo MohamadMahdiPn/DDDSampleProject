@@ -9,9 +9,9 @@
   <ItemGroup>
     <Folder Include="Commands\PaymentManagement\Handlers\" />
     <Folder Include="DomainEvents\" />
-    <Folder Include="Dtos\" />
+    <Folder Include="Queries\CourseManagement\" />
+    <Folder Include="Queries\PaymentManagement\" />
     <Folder Include="Services\" />
-    <Folder Include="Queries\" />
   </ItemGroup>
 
   <ItemGroup>
