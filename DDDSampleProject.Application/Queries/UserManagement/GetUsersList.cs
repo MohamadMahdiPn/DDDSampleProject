@@ -1,6 +1,9 @@
-﻿namespace DDDSampleProject.Application.Queries.UserManagement;
+﻿using DDDSampleProject.Abstraction.Queries;
+using DDDSampleProject.Application.Dtos;
 
-public class GetUsersList
+namespace DDDSampleProject.Application.Queries.UserManagement;
+
+public class GetUsersList:IQuery<IEnumerable<UserDto>>
 {
     
 }

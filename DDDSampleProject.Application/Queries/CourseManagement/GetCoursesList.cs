@@ -1,6 +1,9 @@
-﻿namespace DDDSampleProject.Application.Queries.CourseManagement;
+﻿using DDDSampleProject.Abstraction.Queries;
+using DDDSampleProject.Application.Dtos;
 
-public class GetCoursesList
+namespace DDDSampleProject.Application.Queries.CourseManagement;
+
+public class GetCoursesList:IQuery<IEnumerable<CourseDto>>
 {
 
 }
