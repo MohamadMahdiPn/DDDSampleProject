@@ -1,5 +1,6 @@
 ﻿using DDDSampleProject.Infrastructure.Ef.Models.CourseManagement;
 using DDDSampleProject.Infrastructure.Ef.Models.PaymentManagement;
+using DDDSampleProject.Infrastructure.Ef.Models.UserManagement;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 
@@ -11,7 +12,10 @@ internal sealed partial class ReadConfigurations :
     IEntityTypeConfiguration<CourseAttendeeReadModel>,
     IEntityTypeConfiguration<InvoiceReadModel>,
     IEntityTypeConfiguration<InstructorReadModel>,
-    IEntityTypeConfiguration<LessonReadModel>
+    IEntityTypeConfiguration<LessonReadModel>,
+    IEntityTypeConfiguration<UserReadModel>,
+    IEntityTypeConfiguration<UserRoleReadModel>,
+    IEntityTypeConfiguration<RoleReadModel>
 {
     #region Invoice
     public void Configure(EntityTypeBuilder<InvoiceReadModel> builder)
@@ -28,6 +32,8 @@ internal sealed partial class ReadConfigurations :
     }
     #endregion
 
+
+
     #region Course
     public void Configure(EntityTypeBuilder<CourseReadModel> builder)
     {
@@ -39,9 +45,9 @@ internal sealed partial class ReadConfigurations :
         builder.Property(e => e.Price);
         builder.Property(e => e.InstructorId);
 
-        builder.HasOne(e => e.Instructor).WithMany(e => e.Courses).HasForeignKey(e=>e.InstructorId);
-        builder.HasMany(e=>e.CourseAttendees).WithOne(e=>e.Course).HasForeignKey(e=>e.CourseId); 
-        builder.HasMany(e=>e.CourseCatalogs).WithOne(e=>e.Course).HasForeignKey(e=>e.CourseId);
+        builder.HasOne(e => e.Instructor).WithMany(e => e.Courses).HasForeignKey(e => e.InstructorId);
+        builder.HasMany(e => e.CourseAttendees).WithOne(e => e.Course).HasForeignKey(e => e.CourseId);
+        builder.HasMany(e => e.CourseCatalogs).WithOne(e => e.Course).HasForeignKey(e => e.CourseId);
 
 
 
@@ -58,8 +64,8 @@ internal sealed partial class ReadConfigurations :
         builder.Property(e => e.Title);
         builder.Property(e => e.Description);
         builder.Property(e => e.CourseId);
-      
-        builder.HasOne(c => c.Course).WithMany(e=>e.CourseCatalogs).HasForeignKey(e=>e.CourseId);
+
+        builder.HasOne(c => c.Course).WithMany(e => e.CourseCatalogs).HasForeignKey(e => e.CourseId);
         builder.HasMany(e => e.Lessons).WithOne(e => e.CourseCatalog).HasForeignKey(e => e.CourseCatalogId);
 
 
@@ -75,8 +81,8 @@ internal sealed partial class ReadConfigurations :
         builder.Property(e => e.UserId);
         builder.Property(e => e.CourseId);
 
-        builder.HasOne(e => e.Course).WithMany(e=>e.CourseAttendees).HasForeignKey(e=>e.CourseId);
-        builder.HasOne(e=>e.User).WithMany(e=>e.CourseAttendees).HasForeignKey(e=> e.UserId);
+        builder.HasOne(e => e.Course).WithMany(e => e.CourseAttendees).HasForeignKey(e => e.CourseId);
+        builder.HasOne(e => e.User).WithMany(e => e.CourseAttendees).HasForeignKey(e => e.UserId);
 
 
     }
@@ -91,8 +97,8 @@ internal sealed partial class ReadConfigurations :
         builder.HasKey(e => e.Experience);
         builder.HasKey(e => e.Bio);
         builder.HasKey(e => e.Rating);
-       
-        builder.HasMany(e=>e.Courses).WithOne(e=>e.Instructor).HasForeignKey(e=>e.InstructorId);
+
+        builder.HasMany(e => e.Courses).WithOne(e => e.Instructor).HasForeignKey(e => e.InstructorId);
 
     }
 
@@ -111,6 +117,60 @@ internal sealed partial class ReadConfigurations :
 
         builder.HasOne(e => e.CourseCatalog).WithMany(e => e.Lessons).HasForeignKey(e => e.CourseCatalogId);
     }
+
+
     #endregion
+
+
+
+    #region User
+    public void Configure(EntityTypeBuilder<UserReadModel> builder)
+    {
+        builder.ToTable("Users");
+        builder.HasKey(e => e.Id);
+        builder.Property(x => x.UserName);
+        builder.Property(x => x.IsConfirmed);
+        builder.Property(x => x.Password);
+        builder.Property(x => x.Email);
+       
+        builder.HasMany(x=>x.UserRoles).WithOne(x=>x.User).HasForeignKey(x => x.UserId);
+        builder.HasMany(x=>x.CourseAttendees).WithOne(x=>x.User).HasForeignKey(x=>x.UserId);
+        builder.HasMany(x=>x.Invoices).WithOne(x=>x.User).HasForeignKey(x=>x.UserId);
+
+     
+    }
+
+
+    #endregion
+
+    #region UserRole
+    public void Configure(EntityTypeBuilder<UserRoleReadModel> builder)
+    {
+        builder.ToTable("UserRole");
+        builder.HasKey(e => new { e.UserId, e.RoleId });
+
+
+        builder.HasOne(x => x.Role).WithMany(x=>x.UserRoles).HasForeignKey(e => e.RoleId);
+        builder.HasOne(x => x.User).WithMany(x=>x.UserRoles).HasForeignKey(e => e.UserId);
+
+    }
+
+
+    #endregion
+
+    #region Role
+    public void Configure(EntityTypeBuilder<RoleReadModel> builder)
+    {
+        builder.ToTable("Roles");
+        builder.HasKey(e => e.Id);
+        builder.HasKey(e => e.RoleName);
+
+        builder.HasMany(e => e.UserRoles).WithOne(e => e.Role).HasForeignKey(x=>x.RoleId);
+
+
+    }
+    #endregion
+
+
 
 }

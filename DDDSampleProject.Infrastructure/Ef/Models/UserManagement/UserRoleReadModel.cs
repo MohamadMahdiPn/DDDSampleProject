@@ -8,9 +8,3 @@ public class UserRoleReadModel:BaseReadModel
     public RoleReadModel Role { get; set; }
 
 }
-
-public class RoleReadModel : BaseReadModel
-{
-    public string RoleName { get; set; }
-    public IReadOnlyList<UserRoleReadModel> UserRoles { get; set; }
-}
