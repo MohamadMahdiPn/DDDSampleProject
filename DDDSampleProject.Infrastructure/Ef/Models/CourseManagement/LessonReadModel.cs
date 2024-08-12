@@ -1,6 +1,6 @@
 ﻿namespace DDDSampleProject.Infrastructure.Ef.Models.CourseManagement;
 
-public class LessonReadModel
+public class LessonReadModel:BaseReadModel
 {
     public string Title { get; set; }
     public string VideoUrl { get; set; }

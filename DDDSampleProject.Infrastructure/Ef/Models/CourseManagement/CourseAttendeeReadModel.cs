@@ -2,7 +2,7 @@
 
 namespace DDDSampleProject.Infrastructure.Ef.Models.CourseManagement;
 
-public class CourseAttendeeReadModel
+public class CourseAttendeeReadModel:BaseReadModel
 {
     public Guid UserId { get; set; }
     public UserReadModel User { get; set; }
