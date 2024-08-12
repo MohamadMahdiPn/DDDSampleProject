@@ -1,4 +1,5 @@
 ﻿using DDDSampleProject.Infrastructure.Ef.Models.CourseManagement;
+using DDDSampleProject.Infrastructure.Ef.Models.PaymentManagement;
 
 namespace DDDSampleProject.Infrastructure.Ef.Models.UserManagement;
 
@@ -11,4 +12,5 @@ public class UserReadModel : BaseReadModel
 
     public IReadOnlyList<CourseAttendeeReadModel> CourseAttendees { get; set; }
     public IReadOnlyList<UserRoleReadModel> UserRoles { get; set; }
+    public IReadOnlyList<InvoiceReadModel> Invoices { get; set; }
 }
