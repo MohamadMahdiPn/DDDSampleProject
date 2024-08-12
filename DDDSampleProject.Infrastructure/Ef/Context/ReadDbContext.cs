@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace DDDSampleProject.Infrastructure.Ef.Context;
 
-internal sealed class ReadDbContext:DbContext
+public sealed class ReadDbContext:DbContext
 {
 
 	public ReadDbContext(DbContextOptions<ReadDbContext> options):base(options)

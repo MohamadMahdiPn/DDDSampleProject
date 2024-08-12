@@ -1,34 +1,60 @@
 ﻿using DDDSampleProject.Domain.Entities.UserManagement;
 using DDDSampleProject.Domain.Repositories.UserManagement;
 using DDDSampleProject.Domain.ValueObjects;
+using DDDSampleProject.Infrastructure.Ef.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace DDDSampleProject.Infrastructure.Ef.Repositories;
 
 public class UserRepository : IUserRepository
 {
-    public Task AddAsync(User entity)
+    #region Constructor
+    private readonly WriteDbContext _writeDbContext;
+    public UserRepository(WriteDbContext writeDbContext)
     {
-        throw new NotImplementedException();
+        _writeDbContext = writeDbContext;
     }
+    #endregion
 
-    public Task DeleteAsync(User entity)
-    {
-        throw new NotImplementedException();
-    }
 
-    public Task<IReadOnlyList<User>> GetAll()
+    #region Add
+    public async Task AddAsync(User entity)
     {
-        throw new NotImplementedException();
+        await _writeDbContext.AddAsync(entity);
+        await _writeDbContext.SaveChangesAsync();
     }
+    #endregion
 
-    public Task<User> GetAsync(BaseId id)
+    #region Delete
+    public async Task DeleteAsync(User entity)
     {
-        throw new NotImplementedException();
+        _writeDbContext.Users.Remove(entity);
+        await _writeDbContext.SaveChangesAsync();
     }
+    #endregion
 
-    public Task UpdateAsync(User entity)
+    #region GetAll
+    public async Task<IReadOnlyList<User>> GetAll()
     {
-        throw new NotImplementedException();
+        return await _writeDbContext.Users.Include("_userRoles").ToListAsync();
     }
+    #endregion
+
+    #region Get
+    public async Task<User> GetAsync(BaseId id)
+    {
+        return await _writeDbContext.Users.SingleAsync(x => x.Id == id);
+    }
+    #endregion
+
+    #region Update
+    public async Task UpdateAsync(User entity)
+    {
+        _writeDbContext.Users.Update(entity);
+        await _writeDbContext.SaveChangesAsync();
+    }
+    #endregion
+
+
 }
 

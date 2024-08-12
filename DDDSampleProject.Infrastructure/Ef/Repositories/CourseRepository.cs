@@ -1,34 +1,59 @@
 ﻿using DDDSampleProject.Domain.Entities.CourseManagement;
 using DDDSampleProject.Domain.Repositories.CourseManagement;
 using DDDSampleProject.Domain.ValueObjects;
+using DDDSampleProject.Infrastructure.Ef.Context;
+using Microsoft.EntityFrameworkCore;
 
 namespace DDDSampleProject.Infrastructure.Ef.Repositories;
 
 public class CourseRepository : ICourseRepository
 {
-    public Task AddAsync(Course entity)
+    #region Constructor
+    private readonly WriteDbContext _writeDbContext;
+    public CourseRepository(WriteDbContext writeDbContext)
     {
-        throw new NotImplementedException();
+        _writeDbContext = writeDbContext;
     }
+    #endregion
 
-    public Task DeleteAsync(Course entity)
-    {
-        throw new NotImplementedException();
-    }
 
-    public Task<IReadOnlyList<Course>> GetAll()
+    #region Add
+    public async Task AddAsync(Course entity)
     {
-        throw new NotImplementedException();
+        await _writeDbContext.AddAsync(entity);
+        await _writeDbContext.SaveChangesAsync();
     }
+    #endregion
 
-    public Task<Course> GetAsync(BaseId id)
+    #region Delete
+    public async Task DeleteAsync(Course entity)
     {
-        throw new NotImplementedException();
+        _writeDbContext.Courses.Remove(entity);
+        await _writeDbContext.SaveChangesAsync();
     }
+    #endregion
 
-    public Task UpdateAsync(Course entity)
+    #region GetAll
+    public async Task<IReadOnlyList<Course>> GetAll()
     {
-        throw new NotImplementedException();
+        return await _writeDbContext.Courses.Include("_courseAttendees").ToListAsync();
     }
+    #endregion
+
+    #region Get
+    public async Task<Course> GetAsync(BaseId id)
+    {
+        return await _writeDbContext.Courses.SingleAsync(x => x.Id == id);
+    }
+    #endregion
+
+    #region Update
+    public async Task UpdateAsync(Course entity)
+    {
+        _writeDbContext.Courses.Update(entity);
+        await _writeDbContext.SaveChangesAsync();
+    }
+    #endregion
+
 }
 
