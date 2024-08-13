@@ -1,4 +1,4 @@
-﻿namespace DDDSampleProject.Infrastructure.Ef.Models.CourseManagement;
+﻿namespace DDDSampleProject.Application.Models.CourseManagement;
 
 public class CourseCatalogReadModel : BaseReadModel
 {

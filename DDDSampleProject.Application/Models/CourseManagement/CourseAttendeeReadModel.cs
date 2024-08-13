@@ -1,6 +1,6 @@
-﻿using DDDSampleProject.Infrastructure.Ef.Models.UserManagement;
+﻿using DDDSampleProject.Application.Models.UserManagement;
 
-namespace DDDSampleProject.Infrastructure.Ef.Models.CourseManagement;
+namespace DDDSampleProject.Application.Models.CourseManagement;
 
 public class CourseAttendeeReadModel:BaseReadModel
 {

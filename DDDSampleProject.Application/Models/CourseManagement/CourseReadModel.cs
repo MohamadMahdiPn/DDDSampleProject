@@ -1,6 +1,6 @@
-﻿using DDDSampleProject.Infrastructure.Ef.Models.PaymentManagement;
+﻿using DDDSampleProject.Application.Models.PaymentManagement;
 
-namespace DDDSampleProject.Infrastructure.Ef.Models.CourseManagement;
+namespace DDDSampleProject.Application.Models.CourseManagement;
 
 public class CourseReadModel : BaseReadModel
 {

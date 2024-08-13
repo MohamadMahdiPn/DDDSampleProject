@@ -1,6 +1,7 @@
-﻿using DDDSampleProject.Infrastructure.Ef.Models.CourseManagement;
-using DDDSampleProject.Infrastructure.Ef.Models.PaymentManagement;
-using DDDSampleProject.Infrastructure.Ef.Models.UserManagement;
+﻿
+using DDDSampleProject.Application.Models.CourseManagement;
+using DDDSampleProject.Application.Models.PaymentManagement;
+using DDDSampleProject.Application.Models.UserManagement;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
 

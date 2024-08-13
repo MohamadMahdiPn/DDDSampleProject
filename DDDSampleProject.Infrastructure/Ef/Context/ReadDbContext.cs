@@ -1,7 +1,7 @@
 ﻿using DDDSampleProject.Infrastructure.Ef.Configs.ReadConfigs;
-using DDDSampleProject.Infrastructure.Ef.Models.CourseManagement;
-using DDDSampleProject.Infrastructure.Ef.Models.PaymentManagement;
-using DDDSampleProject.Infrastructure.Ef.Models.UserManagement;
+using DDDSampleProject.Application.Models.CourseManagement;
+using DDDSampleProject.Application.Models.PaymentManagement;
+using DDDSampleProject.Application.Models.UserManagement;
 using Microsoft.EntityFrameworkCore;
 
 namespace DDDSampleProject.Infrastructure.Ef.Context;

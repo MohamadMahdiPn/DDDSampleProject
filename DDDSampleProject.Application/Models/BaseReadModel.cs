@@ -1,4 +1,4 @@
-﻿namespace DDDSampleProject.Infrastructure.Ef.Models;
+﻿namespace DDDSampleProject.Application.Models;
 
 public abstract class BaseReadModel
 {
