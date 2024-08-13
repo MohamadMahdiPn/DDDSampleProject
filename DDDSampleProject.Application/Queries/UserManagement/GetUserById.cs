@@ -5,5 +5,5 @@ namespace DDDSampleProject.Application.Queries.UserManagement;
 
 public class GetUserById : IQuery<UserDto>
 {
-
+    public Guid Id { get; set; }
 }

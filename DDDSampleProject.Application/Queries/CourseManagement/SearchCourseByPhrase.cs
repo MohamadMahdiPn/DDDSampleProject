@@ -5,5 +5,5 @@ namespace DDDSampleProject.Application.Queries.CourseManagement;
 
 public class SearchCourseByPhrase:IQuery<IEnumerable<CourseDto>>
 {
-
+    public string SearchPhrase { get; set; }
 }
