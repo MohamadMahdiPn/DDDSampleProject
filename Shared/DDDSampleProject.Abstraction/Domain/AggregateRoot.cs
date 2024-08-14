@@ -30,5 +30,10 @@ public abstract class AggregateRoot<T>
         }
         _domainEvents.Add(@event);
     } 
+
+    public void ClearEvents()
+    {
+        _domainEvents.Clear();
+    }
 }
 
