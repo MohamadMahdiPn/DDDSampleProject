@@ -19,7 +19,7 @@ public record Price
 
 
     public static implicit operator decimal(Price title) => title.Value;
-    public static implicit operator Price(string value) => new Price(value);
+    public static implicit operator Price(decimal value) => new Price(value);
 }
 public record Amount
 {

@@ -44,9 +44,8 @@ internal sealed partial class ReadConfigurations :
         builder.Property(e => e.Description);
         builder.Property(e => e.IsFree);
         builder.Property(e => e.Price);
-        builder.Property(e => e.InstructorId);
-
-        builder.HasOne(e => e.Instructor).WithMany(e => e.Courses).HasForeignKey(e => e.InstructorId);
+        builder.Property(c => c.InstructorId);
+        builder.HasOne(c => c.Instructor).WithMany(i => i.Courses).HasForeignKey(c => c.InstructorId);
         builder.HasMany(e => e.CourseAttendees).WithOne(e => e.Course).HasForeignKey(e => e.CourseId);
         builder.HasMany(e => e.CourseCatalogs).WithOne(e => e.Course).HasForeignKey(e => e.CourseId);
 
@@ -94,12 +93,14 @@ internal sealed partial class ReadConfigurations :
     {
         builder.ToTable("Instructors");
         builder.HasKey(e => e.Id);
-        builder.HasKey(e => e.FullName);
-        builder.HasKey(e => e.Experience);
-        builder.HasKey(e => e.Bio);
-        builder.HasKey(e => e.Rating);
+        builder.Property(e => e.FullName);
+        builder.Property(e => e.Experience);
+        builder.Property(e => e.Bio);
+        builder.Property(e => e.Rating);
 
-        builder.HasMany(e => e.Courses).WithOne(e => e.Instructor).HasForeignKey(e => e.InstructorId);
+        builder.HasMany(i => i.Courses)
+           .WithOne(c => c.Instructor)
+           .HasForeignKey(c => c.InstructorId);
 
     }
 
@@ -111,9 +112,9 @@ internal sealed partial class ReadConfigurations :
     {
         builder.ToTable("Lessons");
         builder.HasKey(e => e.Id);
-        builder.HasKey(e => e.Title);
-        builder.HasKey(e => e.VideoUrl);
-        builder.HasKey(e => e.CourseCatalogId);
+        builder.Property(e => e.Title);
+        builder.Property(e => e.VideoUrl);
+        builder.Property(e => e.CourseCatalogId);
 
 
         builder.HasOne(e => e.CourseCatalog).WithMany(e => e.Lessons).HasForeignKey(e => e.CourseCatalogId);
@@ -164,7 +165,7 @@ internal sealed partial class ReadConfigurations :
     {
         builder.ToTable("Roles");
         builder.HasKey(e => e.Id);
-        builder.HasKey(e => e.RoleName);
+        builder.Property(e => e.RoleName);
 
         builder.HasMany(e => e.UserRoles).WithOne(e => e.Role).HasForeignKey(x=>x.RoleId);
 

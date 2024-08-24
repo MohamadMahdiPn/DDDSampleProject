@@ -11,6 +11,6 @@ public class LessonFactoryFactory : ILessonFactoryFactory
 {
     public Lesson Create(BaseId id, Title title, VideoUrl videoUrl, BaseId courseCatalogId)
     {
-        return new(id, title, videoUrl, courseCatalogId);
+        return new Lesson(id, title, videoUrl, courseCatalogId);
     }
 }

@@ -4,4 +4,4 @@ using DDDSampleProject.Domain.ValueObjects;
 namespace DDDSampleProject.Application.Commands.UserManagement;
 
 
-public record CreateUser(BaseId id, UserName userName, Password password, Email email, bool isConfirmed) : ICommand;
+public record CreateUser(Guid id, string userName, string password, string email, bool isConfirmed) : ICommand;

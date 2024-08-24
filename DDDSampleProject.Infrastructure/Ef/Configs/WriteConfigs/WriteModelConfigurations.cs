@@ -42,7 +42,9 @@ internal sealed class WriteModelConfigurations :
         builder.Property(typeof(BaseId), "_instructorId").HasConversion(idConverter).HasColumnName("InstructorId");
 
         builder.HasOne<Instructor>().WithMany().HasForeignKey("_instructorId").IsRequired();
-        builder.HasMany(typeof(CourseAttendee), "_courseAttendee").WithOne().HasForeignKey("_courseId");
+        builder.HasMany(typeof(CourseAttendee), "_courseAttendees")
+            .WithOne()
+            .HasForeignKey("_userId");
 
     }
     #endregion
@@ -51,14 +53,33 @@ internal sealed class WriteModelConfigurations :
     public void Configure(EntityTypeBuilder<CourseCatalog> builder)
     {
         builder.ToTable("CourseCatalogs");
-        builder.HasKey(c => c.Id);
+        builder.HasKey(cc => cc.Id);
+        builder.Property(cc => cc.Id)
+            .HasConversion(idConverter);
 
-        builder.Property(c => c.Id).HasConversion(idConverter);
-        builder.Property(typeof(Title), "_title").HasConversion(titleConverter).HasColumnName("Title").IsRequired();
-        builder.Property(typeof(Description), "_description").HasConversion(descriptionConverter).HasColumnName("Description");
-        builder.Property(typeof(BaseId), "_courseId").HasConversion(idConverter).HasColumnName("CourseId");
-        builder.HasOne<Course>().WithMany().HasForeignKey("_courseId").IsRequired();
-        builder.HasMany(typeof(Lesson), "_lessons").WithOne().HasForeignKey("_courseCatalogId").IsRequired();
+        builder.Property(typeof(Title), "_title")
+        .HasConversion(titleConverter)
+        .HasColumnName("Title")
+        .IsRequired();
+
+        builder.Property(typeof(Description), "_description")
+                .HasConversion(descriptionConverter)
+                .HasColumnName("Description")
+                .IsRequired();
+
+        builder.Property(typeof(BaseId), "_courseId")
+            .HasConversion(idConverter)
+            .HasColumnName("CourseId");
+
+        builder.HasOne<Course>()
+            .WithMany()
+            .HasForeignKey("_courseId")
+            .IsRequired();
+
+        builder.HasMany(typeof(Lesson), "_lessons")
+            .WithOne()
+            .HasForeignKey("_courseCatalogId")
+            .IsRequired();
 
 
     }
@@ -67,15 +88,24 @@ internal sealed class WriteModelConfigurations :
     #region Instructor
     public void Configure(EntityTypeBuilder<Instructor> builder)
     {
-        var fullNameConverter = new ValueConverter<Biography, string>(fullName => fullName.Value, fullName => new Biography(fullName));
+        var fullNameConverter = new ValueConverter<FullName, string>(fullName => fullName.Value, fullName => new FullName(fullName));
         var bioConverter = new ValueConverter<Biography, string>(bio => bio.Value, bio => new Biography(bio));
 
         builder.ToTable("Instructors");
         builder.HasKey(c => c.Id);
 
         builder.Property(c => c.Id).HasConversion(idConverter);
-        builder.Property(typeof(FullName), "_fullName").HasConversion(titleConverter).HasColumnName("FullName").IsRequired();
-        builder.Property(typeof(Biography), "_biography").HasConversion(titleConverter).HasColumnName("Biography").IsRequired();
+
+        builder.Property(typeof(FullName), "_fullName")
+       .HasConversion(fullNameConverter)
+       .HasColumnName("FullName")
+       .IsRequired();
+
+
+        builder.Property(typeof(Biography), "_biography")
+          .HasConversion(bioConverter)
+          .HasColumnName("Biography")
+          .IsRequired();
         builder.Property(typeof(double), "_rating").HasColumnName("Rating");
         builder.Property(typeof(int), "_experience").HasColumnName("Experience");
 
@@ -139,7 +169,10 @@ internal sealed class WriteModelConfigurations :
         builder.Property(typeof(Email), "_email").HasConversion(emailConverter).HasColumnName("Email").IsRequired();
         builder.Property(typeof(bool), "_isConfirmed").HasColumnName("IsConfirmed");
 
-        builder.HasMany(typeof(CourseAttendee), "_courseAttendees").WithOne().HasForeignKey("_userId");
+        builder.HasMany(typeof(CourseAttendee), "_courseAttendes")
+            .WithOne()
+            .HasForeignKey("_userId");
+
         builder.HasMany(typeof(UserRole), "_userRoles").WithOne().HasForeignKey("_userId");
 
 

@@ -3,4 +3,4 @@ using DDDSampleProject.Domain.ValueObjects;
 
 namespace DDDSampleProject.Application.Commands.UserManagement;
 
-public record CreateRole(BaseId id, FullName fullName) : ICommand;
+public record CreateRole(Guid id, FullName fullName) : ICommand;

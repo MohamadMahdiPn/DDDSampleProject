@@ -3,4 +3,4 @@ using DDDSampleProject.Domain.ValueObjects;
 
 namespace DDDSampleProject.Application.Commands.UserManagement;
 
-public record DeleteRole(BaseId id) : ICommand;
+public record DeleteRole(Guid id) : ICommand;

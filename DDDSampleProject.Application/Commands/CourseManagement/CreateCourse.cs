@@ -3,4 +3,4 @@ using DDDSampleProject.Domain.ValueObjects;
 
 namespace DDDSampleProject.Application.Commands.CourseManagement;
 
-public record CreateCourse(BaseId id, Title title, Description description, bool isFree, Price price, BaseId instructorId) :ICommand;
+public record CreateCourse(Guid id, string title, string description, bool isFree, decimal price, Guid instructorId) :ICommand;

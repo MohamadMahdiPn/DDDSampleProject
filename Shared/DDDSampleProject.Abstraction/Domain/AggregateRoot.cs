@@ -9,13 +9,13 @@ namespace DDDSampleProject.Abstraction.Domain;
 public abstract class AggregateRoot<T>
 {
     public T Id { get; protected set; }
-    public int Version { get;protected set; }
+    //public int Version { get;protected set; }
     private bool _isIncremented;
     protected void IncrementVersion()
     {
         if (_isIncremented)
             return;
-        Version++;
+        //Version++;
         _isIncremented = true;
        
     }

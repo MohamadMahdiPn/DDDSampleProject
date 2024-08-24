@@ -2,6 +2,6 @@
 
 public class DbContextOptions
 {
-    public string DbContextConnectionString { get; set; }
+    public string ConnectionString { get; set; }
 }
 
